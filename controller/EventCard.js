@@ -1,7 +1,7 @@
 var rest = require('../API/Restclient');
 var builder = require('botbuilder');
 
-//Calls 'getYelpData' in RestClient.js with 'displayEventCards' as callback to get list of events information
+//Calls 'getYelpEventData' in RestClient.js with 'displayEventCards' as callback to get list of events information
 exports.displayEventCards = function getEventData(location, session){
     var url ='https://api.yelp.com/v3/events?location='+location;
     var auth ='cO92idzWqWjpOsV8RdAoB2DZl2GW8OE8pvoTlOjNNI0gbA2J7xXuiAPtLAYCkPCKR-dIXG3ePsSI4ngt8WRNQ4q4RlKMdXyvJr6r4_L3kndI5wpznLN6WUrPmgDYWXYx';
@@ -17,7 +17,7 @@ function displayEventCards(message, session) {
         var event = eventsFound.events[index];
         var name = event.name;
         var imageURL = event.image_url;
-        var url = event.url;
+        var url = event.event_site_url;
         var address = event.location.address1 + ", " + event.location.city;
 
         var card = new builder.HeroCard(session)

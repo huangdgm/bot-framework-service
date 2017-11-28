@@ -9,7 +9,6 @@ var customVision = require('./CustomVision')
 
 
 exports.startDialog = function (bot) {
-    // Replace {YOUR_APP_ID_HERE} and {YOUR_KEY_HERE} with your LUIS app ID and your LUIS key, respectively.
     var recognizer = new builder.LuisRecognizer('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/60550629-34a1-45ea-8e44-e5baa4bd4d0e?subscription-key=581def6fd85842c28c2e25762b3ac2c8&verbose=true&timezoneOffset=0&q=');
     
     bot.recognizer(recognizer);
@@ -57,7 +56,7 @@ exports.startDialog = function (bot) {
         matches: 'GetFavouriteFood'
     });
 
-  bot.dialog('DeleteFavourite', [
+	bot.dialog('DeleteFavourite', [
         function (session, args, next) {
 			if(!isAttachment(session)){
 				session.dialogData.args = args || {};
