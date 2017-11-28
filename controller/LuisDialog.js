@@ -110,7 +110,22 @@ exports.startDialog = function (bot) {
         matches: 'WantFood'
     });
 
-
+	bot.dialog('LookForEvent', function (session, args) {
+        if (!isAttachment(session)) {
+            // Pulls out the location entity from the session if it exists
+            var locationEntity = builder.EntityRecognizer.findEntity(args.intent.entities, 'location');
+        
+            // Checks if the for entity was found
+            if (locationEntity) {
+                session.send('Looking for events in %s...', locationEntity.entity);
+                event.displayEventCards(locationEntity.entity, session);
+            } else {
+                session.send("No event identified! Please try again");
+            }
+        }
+    }).triggerAction({
+        matches: 'LookForEvent'
+    });
 
     bot.dialog('WelcomeIntent', function (session, args) {
 		if(!isAttachment(session)){	// Dong

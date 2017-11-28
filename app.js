@@ -19,7 +19,6 @@ server.post('/api/messages', connector.listen());
 
 // Receive messages from the user
 var bot = new builder.UniversalBot(connector, function (session) {
-    
     session.send('Sorry, I did not understand \'%s\'. Type \'help\' if you need assistance.', session.message.text);
 });
     
