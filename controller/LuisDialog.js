@@ -135,7 +135,7 @@ exports.startDialog = function (bot) {
         
             // Checks if the for entity was found
             if (currencyEntity) {
-                session.send('Looking for events in %s...', currencyEntity.entity);
+                session.send('Looking for rates for %s...', currencyEntity.entity);
                 currency.displayCurrencyCards(currencyEntity.entity, session);
             } else {
                 session.send("No currency identified! Please try again");
