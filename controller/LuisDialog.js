@@ -2,6 +2,7 @@ var builder = require('botbuilder');
 var food = require("./FavouriteFoods");
 var restaurant = require('./RestaurantCard');
 var event = require('./EventCard');
+var currency = require('./CurrencyCard');
 var nutrition = require('./NutritionCard');
 var customVision = require('./CustomVision')
 
@@ -125,6 +126,23 @@ exports.startDialog = function (bot) {
         }
     }).triggerAction({
         matches: 'LookForEvent'
+    });
+	
+	bot.dialog('GetRates', function (session, args) {
+        if (!isAttachment(session)) {
+            // Pulls out the currency entity from the session if it exists
+            var currencyEntity = builder.EntityRecognizer.findEntity(args.intent.entities, 'currency');
+        
+            // Checks if the for entity was found
+            if (currencyEntity) {
+                session.send('Looking for events in %s...', currencyEntity.entity);
+                currency.displayCurrencyCards(currencyEntity.entity, session);
+            } else {
+                session.send("No currency identified! Please try again");
+            }
+        }
+    }).triggerAction({
+        matches: 'GetRates'
     });
 
     bot.dialog('WelcomeIntent', function (session, args) {
