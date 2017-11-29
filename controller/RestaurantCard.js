@@ -29,7 +29,6 @@ function displayRestaurantCards(message, session) {
                 builder.CardAction.openUrl(session, url, 'More Information')
             ]);
         attachment.push(card);
-
     }
 
     //Displays restaurant hero card carousel in chat box 

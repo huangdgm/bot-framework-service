@@ -12,14 +12,14 @@ function displayCurrencyCards(message, session) {
     var ratesFound = JSON.parse(message);
     
     //For each rate, add herocard with name and rate in attachment
-    var base = ratesFound.name;
-	var rates = ratesFound.rates;
+    var base = ratesFound.base;
+	var rateList = JSON.stringify(ratesFound.rates);
 	var date = ratesFound.date;
 
     var card = new builder.HeroCard(session)
         .title(base)
-        .text(rates)
-		//.text(date);
+		.subtitle(date)
+        .text(rateList);
     attachment.push(card);
 
     //Displays rates hero card carousel in chat box 

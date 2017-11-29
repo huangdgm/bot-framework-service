@@ -10,10 +10,10 @@ server.listen(process.env.port || process.env.PORT || 3978, function () {
 
 // Create chat connector for communicating with the Bot Framework Service
 var connector = new builder.ChatConnector({
-    //appId: "af16038f-76bc-48f8-8b89-6ef4f1674833",
-    //appPassword: "chhzmqAVAC770*^lDAW46=#"
-	appId: process.env.MICROSOFT_APP_ID,
-    appPassword: process.env.MICROSOFT_APP_PASSWORD
+    appId: "af16038f-76bc-48f8-8b89-6ef4f1674833",
+    appPassword: "chhzmqAVAC770*^lDAW46=#"
+	//appId: process.env.MICROSOFT_APP_ID,
+    //appPassword: process.env.MICROSOFT_APP_PASSWORD
 });
 
 // Listen for messages from users 
@@ -26,3 +26,13 @@ var bot = new builder.UniversalBot(connector, function (session) {
     
 // This line will call the function in your LuisDialog.js file
 luis.startDialog(bot);
+
+bot.on('conversationUpdate', function (activity) {
+	if (activity.membersAdded) {
+		activity.membersAdded.forEach(function (identity) {
+		if (identity.id === activity.address.bot.id) {
+			bot.send('MESSAGE HERE');
+		}
+		});
+	}
+});
