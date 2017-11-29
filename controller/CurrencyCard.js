@@ -19,7 +19,7 @@ function displayCurrencyCards(message, session) {
     var card = new builder.HeroCard(session)
         .title(base)
         .text(rates)
-		.text(date);
+		//.text(date);
     attachment.push(card);
 
     //Displays rates hero card carousel in chat box 
