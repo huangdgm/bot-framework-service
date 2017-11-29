@@ -23,16 +23,6 @@ server.post('/api/messages', connector.listen());
 var bot = new builder.UniversalBot(connector, function (session) {
     session.send('Sorry, I did not understand \'%s\'. Type \'help\' if you need assistance.', session.message.text);
 });
-
-bot.on('conversationUpdate', function (activity) {
-	if (activity.membersAdded) {
-		activity.membersAdded.forEach(function (identity) {
-		if (identity.id === activity.address.bot.id) {
-			bot.send('MESSAGE HERE');
-		}
-		});
-	}
-});
     
 // This line will call the function in your LuisDialog.js file
 luis.startDialog(bot);

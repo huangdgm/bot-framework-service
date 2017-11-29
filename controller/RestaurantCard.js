@@ -1,7 +1,7 @@
 var rest = require('../API/Restclient');
 var builder = require('botbuilder');
 
-//Calls 'getYelpData' in RestClient.js with 'displayRestaurantCards' as callback to get list of restaurant information
+//Calls 'getYelpRestaurantData' in RestClient.js with 'displayRestaurantCards' as callback to get list of restaurant information
 exports.displayRestaurantCards = function getRestaurantData(foodName, location, session){
     var url ='https://api.yelp.com/v3/businesses/search?term='+foodName+'&location='+location + '&limit=5';
     var auth ='BRIcgJBZ7_gG4csSu9e3Yfdyto_2L0xiRL1sG4m6BMTv5QFLX7nNZuVCLSsoWJZ6rRoex4MUrbygnhYh1F_RKTHvbWHYr3OpPflVnK4RDr4hMNLXnvI1pgJNegUeWnYx';

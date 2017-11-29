@@ -3,6 +3,7 @@ var food = require("./FavouriteFoods");
 var restaurant = require('./RestaurantCard');
 var event = require('./EventCard');
 var currency = require('./CurrencyCard');
+var bot = require('./BotCard');
 var nutrition = require('./NutritionCard');
 var customVision = require('./CustomVision')
 
@@ -144,10 +145,18 @@ exports.startDialog = function (bot) {
     }).triggerAction({
         matches: 'GetRates'
     });
+	
+	bot.dialog('WhoAreYou', function (session, args) {
+		if (!isAttachment(session)) {
+			bot.displayBotCard(session);
+		}
+    }).triggerAction({
+        matches: 'WhoAreYou'
+    });
 
     bot.dialog('WelcomeIntent', function (session, args) {
 		if(!isAttachment(session)){	// Dong
-			session.send("WelcomeIntent intent found");
+			session.send("hi there");
 		}
     }).triggerAction({
         matches: 'WelcomeIntent'
