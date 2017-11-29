@@ -1,6 +1,7 @@
 var builder = require('botbuilder');
 var food = require("./FavouriteFoods");
 var restaurant = require('./RestaurantCard');
+var event = require('./EventCard');
 var nutrition = require('./NutritionCard');
 var customVision = require('./CustomVision')
 

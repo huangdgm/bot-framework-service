@@ -3,8 +3,8 @@ var builder = require('botbuilder');
 
 //Calls 'getYelpEventData' in RestClient.js with 'displayEventCards' as callback to get list of events information
 exports.displayEventCards = function getEventData(location, session){
-    var url ='https://api.yelp.com/v3/events?location='+location;
-    var auth ='cO92idzWqWjpOsV8RdAoB2DZl2GW8OE8pvoTlOjNNI0gbA2J7xXuiAPtLAYCkPCKR-dIXG3ePsSI4ngt8WRNQ4q4RlKMdXyvJr6r4_L3kndI5wpznLN6WUrPmgDYWXYx';
+    var url ='https://api.yelp.com/v3/events?location='+location+'&limit=5';
+    var auth ='BRIcgJBZ7_gG4csSu9e3Yfdyto_2L0xiRL1sG4m6BMTv5QFLX7nNZuVCLSsoWJZ6rRoex4MUrbygnhYh1F_RKTHvbWHYr3OpPflVnK4RDr4hMNLXnvI1pgJNegUeWnYx';
     rest.getYelpEventData(url,auth,session,displayEventCards);
 }
 
